@@ -1,32 +1,32 @@
-package com.gopal.ehr.rest.exception;
-
-public class DuplicateDataException extends RuntimeException {
-	private static final long serialVersionUID = 1L;
-
-	public DuplicateDataException() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public DuplicateDataException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DuplicateDataException(String message, Throwable cause) {
-		super(message, cause);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DuplicateDataException(String message) {
-		super(message);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DuplicateDataException(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
-	}
-
-}
+//package com.gopal.ehr.rest.exception;
+//
+//public class DuplicateDataException extends RuntimeException {
+//	private static final long serialVersionUID = 1L;
+//
+//	public DuplicateDataException() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public DuplicateDataException(String message, Throwable cause, boolean enableSuppression,
+//			boolean writableStackTrace) {
+//		super(message, cause, enableSuppression, writableStackTrace);
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public DuplicateDataException(String message, Throwable cause) {
+//		super(message, cause);
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public DuplicateDataException(String message) {
+//		super(message);
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	public DuplicateDataException(Throwable cause) {
+//		super(cause);
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//}

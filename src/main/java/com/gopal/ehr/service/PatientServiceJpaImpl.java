@@ -18,7 +18,6 @@ import com.gopal.ehr.entity.AllergyDetailsEntity;
 import com.gopal.ehr.entity.PatientAllergyEntity;
 import com.gopal.ehr.entity.PatientEntity;
 import com.gopal.ehr.entity.QueryConstants;
-import com.gopal.ehr.rest.exception.DuplicateDataException;
 import com.gopal.ehr.vo.PatientAllergyVO;
 import com.gopal.ehr.vo.PatientDataVO;
 
@@ -70,12 +69,12 @@ public class PatientServiceJpaImpl implements PatientService {
 				if (patientEntityList.getDob().equalsIgnoreCase(patientEntity.getDob())) {
 					// System.out.println("name and dob matched");
 
-					if (patientEntityList.getGender().equalsIgnoreCase(patientEntity.getGender())) {
-						// System.out.println("name dob zip gender matched");
-						throw new DuplicateDataException("the patient exists");
-					} else {
-						// System.out.println("no duplicate gender");
-					}
+//					if (patientEntityList.getGender().equalsIgnoreCase(patientEntity.getGender())) {
+//						// System.out.println("name dob zip gender matched");
+//						throw new DuplicateDataException("the patient exists");
+//					} else {
+//						// System.out.println("no duplicate gender");
+//					}
 
 				} else {
 					// System.out.println("no duplicate dob,zip,gender");

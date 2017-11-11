@@ -15,5 +15,6 @@ public class EHRApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(EHRApplication.class, args);
+		
 	}
 }
