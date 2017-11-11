@@ -1,17 +1,17 @@
-package com.gopal.ehr.vo;
+package com.gopal.ehr.data;
 
-public class AddressVO {
+public class AddressData {
 
 	private String Street;
 	private String City;
 	private String State;
 	private Long Zip;
 
-	public AddressVO() {
+	public AddressData() {
 
 	}
 
-	public AddressVO(String street, String city, String state, Long zip) {
+	public AddressData(String street, String city, String state, Long zip) {
 		Street = street;
 		City = city;
 		State = state;

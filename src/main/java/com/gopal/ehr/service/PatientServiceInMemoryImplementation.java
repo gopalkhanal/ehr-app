@@ -7,16 +7,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.gopal.ehr.vo.PatientAllergyVO;
-import com.gopal.ehr.vo.PatientDataVO;
+import com.gopal.ehr.data.PatientAllergyData;
+import com.gopal.ehr.data.PatientData;
 
 @Service
 public class PatientServiceInMemoryImplementation implements PatientService {
 
-	private HashMap<Long, PatientDataVO> patientDBMap = new HashMap<Long, PatientDataVO>();
+	private HashMap<Long, PatientData> patientDBMap = new HashMap<Long, PatientData>();
 
 	@Override
-	public PatientDataVO createPatient(final PatientDataVO patientData) {
+	public PatientData createPatient(final PatientData patientData) {
 
 		if (patientData != null)
 			patientData.setId(System.currentTimeMillis());
@@ -26,25 +26,25 @@ public class PatientServiceInMemoryImplementation implements PatientService {
 	}
 
 	@Override
-	public void modifyPatient(final PatientDataVO patient) {
+	public void modifyPatient(final PatientData patient) {
 
 		System.out.println("This part is not done...");
 	}
 
 	@Override
-	public PatientDataVO findPatient(Long key) {
+	public PatientData findPatient(Long key) {
 
 		return patientDBMap.get(key);
 	}
 
 	@Override
-	public List<PatientDataVO> searchPatient(String name, String dob, String gender, Long zip) {
+	public List<PatientData> searchPatient(String name, String dob, String gender, Long zip) {
 
-		List<PatientDataVO> result = new ArrayList<>();
+		List<PatientData> result = new ArrayList<>();
 
-		Collection<PatientDataVO> allPatients = patientDBMap.values();
+		Collection<PatientData> allPatients = patientDBMap.values();
 
-		for (PatientDataVO pData : allPatients) {
+		for (PatientData pData : allPatients) {
 			if (pData.getFirstName().toLowerCase().startsWith(name.toLowerCase())) {
 				result.add(pData);
 			} else if (pData.getDob().equals(dob)) {
@@ -63,14 +63,14 @@ public class PatientServiceInMemoryImplementation implements PatientService {
 	}
 
 	@Override
-	public PatientAllergyVO createPatientAllergy(PatientAllergyVO patientAllergyVO) {
+	public PatientAllergyData createPatientAllergy(PatientAllergyData patientAllergyVO) {
 
 		System.out.println("This method is used only for JpaImplementation...");
 		return null;
 	}
 
 	@Override
-	public HashMap<Long, PatientDataVO> searchPatients() {
+	public HashMap<Long, PatientData> searchPatients() {
 
 		System.out.println("We don't need this...because we're using List...");
 		return null;

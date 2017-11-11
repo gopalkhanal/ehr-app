@@ -1,17 +1,17 @@
-package com.gopal.ehr.vo;
+package com.gopal.ehr.data;
 
-public class ContactInfoVO {
+public class ContactInfoData {
 
 	private String email;
 	private Long homePhone;
 	private Long cellPhone;
 	private String methodOfContact;
 
-	public ContactInfoVO() {
+	public ContactInfoData() {
 
 	}
 
-	public ContactInfoVO(String email, Long homePhone, Long cellPhone, String methodOfContact) {
+	public ContactInfoData(String email, Long homePhone, Long cellPhone, String methodOfContact) {
 		this.email = email;
 		this.homePhone = homePhone;
 		this.cellPhone = cellPhone;

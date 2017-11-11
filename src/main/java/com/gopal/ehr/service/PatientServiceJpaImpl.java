@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gopal.ehr.data.PatientAllergyData;
+import com.gopal.ehr.data.PatientData;
 import com.gopal.ehr.entity.AllergyDetailsEntity;
 import com.gopal.ehr.entity.PatientAllergyEntity;
 import com.gopal.ehr.entity.PatientEntity;
 import com.gopal.ehr.entity.QueryConstants;
-import com.gopal.ehr.vo.PatientAllergyVO;
-import com.gopal.ehr.vo.PatientDataVO;
 
 @Service("psJpaImpl")
 @Transactional
@@ -42,7 +42,7 @@ public class PatientServiceJpaImpl implements PatientService {
 	 * and the Entity Manager(from @PersistenceContext)
 	 */
 	@Override
-	public PatientDataVO createPatient(PatientDataVO patientDataVO) {
+	public PatientData createPatient(PatientData patientDataVO) {
 
 		Random random = new Random();
 
@@ -94,7 +94,7 @@ public class PatientServiceJpaImpl implements PatientService {
 		patientDataVO.setId(patientEntity.getId());
 
 		// Creating PatientAllergyRecord
-		List<PatientAllergyVO> allergyVOList = patientDataVO.getPatientAllergyVO();
+		List<PatientAllergyData> allergyVOList = patientDataVO.getPatientAllergyVO();
 		List<PatientAllergyEntity> allergyEntityList = allergyService.createPatientAllergyRecord(allergyVOList);
 
 		for (PatientAllergyEntity patientAllergyEntity : allergyEntityList) {
@@ -102,7 +102,7 @@ public class PatientServiceJpaImpl implements PatientService {
 			patientEntity.getPatientsAllergy().add(patientAllergyEntity);
 			patientAllergyEntity.setPatientEntity(patientEntity);
 
-			for (PatientAllergyVO patientAllergyVO : allergyVOList) {
+			for (PatientAllergyData patientAllergyVO : allergyVOList) {
 
 				patientAllergyVO.setPatientId(patientDataVO.getId());
 				patientAllergyVO.setPatientAllergyId(patientAllergyEntity.getPatientAllergyId());
@@ -121,7 +121,7 @@ public class PatientServiceJpaImpl implements PatientService {
 	}
 
 	@Override
-	public void modifyPatient(PatientDataVO patientDataVO) {
+	public void modifyPatient(PatientData patientDataVO) {
 
 		String timeStamp = new SimpleDateFormat("yyyy-mm-dd").format(new java.util.Date());
 		patientDataVO.setDateModified(timeStamp);
@@ -134,13 +134,13 @@ public class PatientServiceJpaImpl implements PatientService {
 	}
 
 	@Override
-	public PatientDataVO findPatient(Long id) {
+	public PatientData findPatient(Long id) {
 
 		final PatientEntity patientEntity = entityManager.find(PatientEntity.class, id);
 
-		final PatientDataVO result = patientMapper.mapToPatientDataVO(patientEntity);
+		final PatientData result = patientMapper.mapToPatientData(patientEntity);
 
-		List<PatientAllergyVO> patientAllergyList = new ArrayList<PatientAllergyVO>();
+		List<PatientAllergyData> patientAllergyList = new ArrayList<PatientAllergyData>();
 		List<PatientAllergyEntity> patientAllergyEntityList = patientEntity.getPatientsAllergy();
 
 		for (PatientAllergyEntity patientAllergyEntity : patientAllergyEntityList) {
@@ -151,7 +151,7 @@ public class PatientServiceJpaImpl implements PatientService {
 
 		}
 
-		for (PatientAllergyVO patientAllergyVO : patientAllergyList) {
+		for (PatientAllergyData patientAllergyVO : patientAllergyList) {
 
 			patientAllergyVO.setPatientId(patientEntity.getId());
 		}
@@ -164,7 +164,7 @@ public class PatientServiceJpaImpl implements PatientService {
 	}
 
 	@Override
-	public List<PatientDataVO> searchPatient(String name, String dob, String gender, Long zip) {
+	public List<PatientData> searchPatient(String name, String dob, String gender, Long zip) {
 
 		final TypedQuery<PatientEntity> query = entityManager.createNamedQuery(QueryConstants.QUERY_CUSTOMER_SEARCH,
 				PatientEntity.class);
@@ -179,7 +179,7 @@ public class PatientServiceJpaImpl implements PatientService {
 	}
 
 	@Override
-	public PatientAllergyVO createPatientAllergy(PatientAllergyVO patientAllergyVO) {
+	public PatientAllergyData createPatientAllergy(PatientAllergyData patientAllergyVO) {
 
 		final PatientEntity patientEntity = entityManager.find(PatientEntity.class, patientAllergyVO.getPatientId());
 
@@ -208,7 +208,7 @@ public class PatientServiceJpaImpl implements PatientService {
 	}
 
 	@Override
-	public HashMap<Long, PatientDataVO> searchPatients() {
+	public HashMap<Long, PatientData> searchPatients() {
 		System.out.println("This method is only applicable for PatientServiceInMemoryImplementation...");
 		return null;
 	}

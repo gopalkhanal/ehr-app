@@ -2,23 +2,23 @@ package com.gopal.ehr.service;
 
 import org.springframework.stereotype.Component;
 
+import com.gopal.ehr.data.PatientAllergyData;
 import com.gopal.ehr.entity.PatientAllergyEntity;
-import com.gopal.ehr.vo.PatientAllergyVO;
 
 @Component
 public class PatientAllergyMapper {
 
 	public PatientAllergyEntity mapToPatientAllergyEntity(final PatientAllergyEntity patientAllergyEntity,
-			PatientAllergyVO patAllergyVO) {
+			PatientAllergyData patAllergyVO) {
 
 		patientAllergyEntity.setDateCreated(patAllergyVO.getDateCreated());
 
 		return patientAllergyEntity;
 	}
 
-	public PatientAllergyVO mapToPatientAllergyVO(PatientAllergyEntity patientAllergyEntity) {
+	public PatientAllergyData mapToPatientAllergyVO(PatientAllergyEntity patientAllergyEntity) {
 
-		PatientAllergyVO patientAllergyVO = new PatientAllergyVO();
+		PatientAllergyData patientAllergyVO = new PatientAllergyData();
 
 		patientAllergyVO.setDateCreated(patientAllergyEntity.getDateCreated());
 		patientAllergyVO.setPatientAllergyId(patientAllergyEntity.getPatientAllergyId());

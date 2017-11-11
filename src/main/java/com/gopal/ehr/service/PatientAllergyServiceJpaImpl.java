@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gopal.ehr.data.PatientAllergyData;
 import com.gopal.ehr.entity.AllergyDetailsEntity;
 import com.gopal.ehr.entity.PatientAllergyEntity;
-import com.gopal.ehr.vo.PatientAllergyVO;
 
 @Service("patientAllergyServiceJpaImpl")
 @Transactional
@@ -26,11 +26,11 @@ public class PatientAllergyServiceJpaImpl implements PatientAllergyService {
 	private PatientAllergyMapper patientAllergyMapper;
 
 	@Override
-	public List<PatientAllergyEntity> createPatientAllergyRecord(List<PatientAllergyVO> patientAllergyVOList) {
+	public List<PatientAllergyEntity> createPatientAllergyRecord(List<PatientAllergyData> patientAllergyVOList) {
 
 		List<PatientAllergyEntity> patientAllergyList = new ArrayList<PatientAllergyEntity>();
 
-		for (PatientAllergyVO patAllergyVO : patientAllergyVOList) {
+		for (PatientAllergyData patAllergyVO : patientAllergyVOList) {
 
 			String timeStamp = new SimpleDateFormat("yyyy-mm-dd").format(new java.util.Date());
 			patAllergyVO.setDateCreated(timeStamp);

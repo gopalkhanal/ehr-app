@@ -1,17 +1,17 @@
-package com.gopal.ehr.vo;
+package com.gopal.ehr.data;
 
-public class PatientAllergyVO {
+public class PatientAllergyData {
 
 	private Long patientAllergyId;
 	private Long allergyId;
 	private Long patientId;
 	private String dateCreated;
 
-	public PatientAllergyVO() {
+	public PatientAllergyData() {
 
 	}
 
-	public PatientAllergyVO(Long patientAllergyId, Long allergyId, Long patientId, String dateCreated) {
+	public PatientAllergyData(Long patientAllergyId, Long allergyId, Long patientId, String dateCreated) {
 		super();
 		this.patientAllergyId = patientAllergyId;
 		this.allergyId = allergyId;

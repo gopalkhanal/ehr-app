@@ -3,21 +3,21 @@ package com.gopal.ehr.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.gopal.ehr.vo.PatientAllergyVO;
-import com.gopal.ehr.vo.PatientDataVO;
+import com.gopal.ehr.data.PatientAllergyData;
+import com.gopal.ehr.data.PatientData;
 
 public interface PatientService {
 
-	PatientDataVO createPatient(final PatientDataVO patientData);
+	PatientData createPatient(final PatientData patientData);
 
-	void modifyPatient(final PatientDataVO patientData);
+	void modifyPatient(final PatientData patientData);
 
-	PatientDataVO findPatient(final Long id);
+	PatientData findPatient(final Long id);
 
-	List<PatientDataVO> searchPatient(final String name, final String dob, final String gender, final Long zip);
+	List<PatientData> searchPatient(final String name, final String dob, final String gender, final Long zip);
 
-	HashMap<Long, PatientDataVO> searchPatients();
+	HashMap<Long, PatientData> searchPatients();
 
-	PatientAllergyVO createPatientAllergy(PatientAllergyVO patientAllergyVO);
+	PatientAllergyData createPatientAllergy(PatientAllergyData patientAllergyVO);
 
 }

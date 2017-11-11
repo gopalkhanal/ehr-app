@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gopal.ehr.data.AllergyDetailsData;
 import com.gopal.ehr.entity.AllergyDetailsEntity;
 import com.gopal.ehr.entity.PatientAllergyEntity;
 import com.gopal.ehr.entity.QueryConstants;
-import com.gopal.ehr.vo.AllergyDetailsVO;
 
 @Service("allergyDetailsServiceJpaImpl")
 @Transactional
@@ -24,7 +24,7 @@ public class AllergyDetailsServiceJpaImpl implements AllergyDetailsService {
 	private AllergyDetailsMapper allergyDetailsMapper;
 
 	@Override
-	public AllergyDetailsVO findAllergyDetails(Long allergyCode) {
+	public AllergyDetailsData findAllergyDetails(Long allergyCode) {
 
 		TypedQuery<AllergyDetailsEntity> query = entityManager.createNamedQuery(QueryConstants.QUERY_AllERY_SEARCH,
 				AllergyDetailsEntity.class);
@@ -33,7 +33,7 @@ public class AllergyDetailsServiceJpaImpl implements AllergyDetailsService {
 
 		final AllergyDetailsEntity allergyDetailsEntity = query.getSingleResult();
 
-		final AllergyDetailsVO allergyDetailsVO = allergyDetailsMapper.mapToAllergyDetailsVO(allergyDetailsEntity);
+		final AllergyDetailsData allergyDetailsVO = allergyDetailsMapper.mapToAllergyDetailsVO(allergyDetailsEntity);
 
 		return allergyDetailsVO;
 	}

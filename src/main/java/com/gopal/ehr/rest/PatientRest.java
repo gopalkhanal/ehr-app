@@ -17,11 +17,11 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.gopal.ehr.data.AllergyDetailsData;
+import com.gopal.ehr.data.PatientAllergyData;
+import com.gopal.ehr.data.PatientData;
 import com.gopal.ehr.service.AllergyDetailsService;
 import com.gopal.ehr.service.PatientService;
-import com.gopal.ehr.vo.AllergyDetailsVO;
-import com.gopal.ehr.vo.PatientAllergyVO;
-import com.gopal.ehr.vo.PatientDataVO;
 
 @Path("/patient")
 @Consumes({ MediaType.APPLICATION_JSON })
@@ -37,9 +37,9 @@ public class PatientRest {
 
 	// Creating new Patient
 	@POST
-	public Response createPatient(final PatientDataVO patientDataVo) {
+	public Response createPatient(final PatientData patientDataVo) {
 
-		final PatientDataVO entity = patientService.createPatient(patientDataVo);
+		final PatientData entity = patientService.createPatient(patientDataVo);
 		System.out.println("Creating done");
 		return Response.ok().entity(entity).build();
 
@@ -48,16 +48,16 @@ public class PatientRest {
 	// Creating new Allergy
 	@POST
 	@Path("/patientAllergy")
-	public Response createPatientAllergy(final PatientAllergyVO patientAllergyVO) {
+	public Response createPatientAllergy(final PatientAllergyData patientAllergyVO) {
 
-		final PatientAllergyVO patAllergyVO = patientService.createPatientAllergy(patientAllergyVO);
+		final PatientAllergyData patAllergyVO = patientService.createPatientAllergy(patientAllergyVO);
 
 		return Response.ok().entity(patAllergyVO).build();
 	}
 
 	// Modifying Patient
 	@PUT
-	public Response modify(final PatientDataVO patientDataVo) {
+	public Response modify(final PatientData patientDataVo) {
 
 		System.out.println("Modifying patient record");
 		patientService.modifyPatient(patientDataVo);
@@ -70,7 +70,7 @@ public class PatientRest {
 	@Path("/{patientId}")
 	public Response find(@PathParam("patientId") Long key) {
 		System.out.println("get...");
-		final PatientDataVO entity = patientService.findPatient(key);
+		final PatientData entity = patientService.findPatient(key);
 		return Response.ok().entity(entity).build();
 
 	}
@@ -83,7 +83,7 @@ public class PatientRest {
 
 		System.out.println("restsearch");
 
-		final List<PatientDataVO> searchResult = patientService.searchPatient(name, dob, gender, zip);
+		final List<PatientData> searchResult = patientService.searchPatient(name, dob, gender, zip);
 
 		PatientSearchResults entity = new PatientSearchResults(searchResult);
 
@@ -95,7 +95,7 @@ public class PatientRest {
 	@Path("/allergy/{allergyCode}")
 	public Response findAllergyDetails(@PathParam("allergyCode") final Long allergyCode) {
 
-		final AllergyDetailsVO allergyDetailsEntity = allergyDetailsService.findAllergyDetails(allergyCode);
+		final AllergyDetailsData allergyDetailsEntity = allergyDetailsService.findAllergyDetails(allergyCode);
 
 		return Response.ok().entity(allergyDetailsEntity).build();
 	}

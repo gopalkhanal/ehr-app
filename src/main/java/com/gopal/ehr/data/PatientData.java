@@ -1,11 +1,11 @@
-package com.gopal.ehr.vo;
+package com.gopal.ehr.data;
 
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class PatientDataVO {
+public class PatientData {
 
 	private Long id;
 	private String firstName;
@@ -17,18 +17,18 @@ public class PatientDataVO {
 	private Long ssn;
 	private String dateCreated;
 	private String dateModified;
-	private AddressVO addressVO;
-	private ContactInfoVO contactInfoVO;
+	private AddressData addressVO;
+	private ContactInfoData contactInfoVO;
 
-	private List<PatientAllergyVO> patientAllergyVO;
+	private List<PatientAllergyData> patientAllergyVO;
 
-	public PatientDataVO() {
+	public PatientData() {
 
 	}
 
-	public PatientDataVO(Long id, String firstName, String lastName, String gender, String dob, String patientCode,
-			String patientStatus, Long ssn, String dateCreated, String dateModified, AddressVO addressVO,
-			ContactInfoVO contactInfoVO) {
+	public PatientData(Long id, String firstName, String lastName, String gender, String dob, String patientCode,
+			String patientStatus, Long ssn, String dateCreated, String dateModified, AddressData addressVO,
+			ContactInfoData contactInfoVO) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -123,27 +123,27 @@ public class PatientDataVO {
 		this.dateModified = dateModified;
 	}
 
-	public AddressVO getAddressVO() {
+	public AddressData getAddressVO() {
 		return addressVO;
 	}
 
-	public void setAddressVO(AddressVO addressVO) {
+	public void setAddressVO(AddressData addressVO) {
 		this.addressVO = addressVO;
 	}
 
-	public ContactInfoVO getContactInfoVO() {
+	public ContactInfoData getContactInfoVO() {
 		return contactInfoVO;
 	}
 
-	public void setContactInfoVO(ContactInfoVO contactInfoVO) {
+	public void setContactInfoVO(ContactInfoData contactInfoVO) {
 		this.contactInfoVO = contactInfoVO;
 	}
 
-	public List<PatientAllergyVO> getPatientAllergyVO() {
+	public List<PatientAllergyData> getPatientAllergyVO() {
 		return patientAllergyVO;
 	}
 
-	public void setPatientAllergyVO(List<PatientAllergyVO> patientAllergyVO) {
+	public void setPatientAllergyVO(List<PatientAllergyData> patientAllergyVO) {
 		this.patientAllergyVO = patientAllergyVO;
 	}
 

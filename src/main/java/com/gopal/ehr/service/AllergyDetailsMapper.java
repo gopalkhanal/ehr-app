@@ -2,15 +2,15 @@ package com.gopal.ehr.service;
 
 import org.springframework.stereotype.Component;
 
+import com.gopal.ehr.data.AllergyDetailsData;
 import com.gopal.ehr.entity.AllergyDetailsEntity;
-import com.gopal.ehr.vo.AllergyDetailsVO;
 
 @Component
 public class AllergyDetailsMapper {
 
-	public AllergyDetailsVO mapToAllergyDetailsVO(AllergyDetailsEntity allergyDetailsEntity) {
+	public AllergyDetailsData mapToAllergyDetailsVO(AllergyDetailsEntity allergyDetailsEntity) {
 
-		AllergyDetailsVO allergyDetailsVO = new AllergyDetailsVO();
+		AllergyDetailsData allergyDetailsVO = new AllergyDetailsData();
 
 		allergyDetailsVO.setAllergyCode(allergyDetailsEntity.getAllergyCode());
 		allergyDetailsVO.setAllergyDescription(allergyDetailsEntity.getAllergyDescription());

@@ -2,26 +2,26 @@ package com.gopal.ehr.rest;
 
 import java.util.List;
 
-import com.gopal.ehr.vo.PatientDataVO;
+import com.gopal.ehr.data.PatientData;
 
 public class PatientSearchResults {
 
-	private List<PatientDataVO> patients;
+	private List<PatientData> patients;
 
 	public PatientSearchResults() {
 
 	}
 
-	public PatientSearchResults(List<PatientDataVO> patients) {
+	public PatientSearchResults(List<PatientData> patients) {
 
 		this.patients = patients;
 	}
 
-	public List<PatientDataVO> getPatients() {
+	public List<PatientData> getPatients() {
 		return patients;
 	}
 
-	public void setPatients(List<PatientDataVO> patients) {
+	public void setPatients(List<PatientData> patients) {
 		this.patients = patients;
 	}
 
