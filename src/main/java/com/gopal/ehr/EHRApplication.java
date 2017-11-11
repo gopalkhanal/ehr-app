@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource({ "classpath*:SpringJPA.xml" })
-@ComponentScan({ "com.mahesh.springbootapp" })
+@ComponentScan({ "com.gopal.ehr" })
 public class EHRApplication {
 
 	public static void main(String[] args) {
