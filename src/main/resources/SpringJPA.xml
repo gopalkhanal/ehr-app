@@ -19,7 +19,7 @@ http://www.springframework.org/schema/util/spring-util.xsd
 http://www.springframework.org/schema/aop 
 http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<context:component-scan base-package="com.mahesh.springbootapp"></context:component-scan>
+	<context:component-scan base-package="com.gopal.ehr"></context:component-scan>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
@@ -42,7 +42,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="packagesToScan" value="com.mahesh.springbootapp.entity" />
+		<property name="packagesToScan" value="com.gopal.ehr.entity" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
