@@ -46,54 +46,28 @@ public class PatientServiceJpaImpl implements PatientService {
 
 		Random random = new Random();
 
-		// Setting PatientCode before persisting to database.
 		patientDataVO.setPatientCode(String.format("%04d", random.nextInt(10000)));
 
-		// Setting DateCreated before persisting to database.
 		String timeStamp = new SimpleDateFormat("yyyy-mm-dd").format(new java.util.Date());
 		patientDataVO.setDateCreated(timeStamp);
 
-		// Mapping PatientDataVO to PatientEntity before persisting Patient records to
-		// database.
 		PatientEntity patientEntity = patientMapper.mapToPatientEntity(patientDataVO);
 		System.out.println("Mapping is done");
 
-		/*
-		 * if (entity == null) { throw new InvalidDataException("invalid entity"); }
-		 */
 		List<PatientEntity> patientRecordListDB = patientRecordListDB();
 		for (PatientEntity patientEntityList : patientRecordListDB) {
 			System.out.println(patientEntityList.getFirstName() + " new: " + patientEntity.getFirstName());
 			if (patientEntityList.getFirstName().equalsIgnoreCase(patientEntity.getFirstName())) {
-				// System.out.println("name matched");
 				if (patientEntityList.getDob().equalsIgnoreCase(patientEntity.getDob())) {
-					// System.out.println("name and dob matched");
-
-//					if (patientEntityList.getGender().equalsIgnoreCase(patientEntity.getGender())) {
-//						// System.out.println("name dob zip gender matched");
-//						throw new DuplicateDataException("the patient exists");
-//					} else {
-//						// System.out.println("no duplicate gender");
-//					}
-
-				} else {
-					// System.out.println("no duplicate dob,zip,gender");
 				}
-			} else {
-				// System.out.println("no duplicate record");
 			}
 		}
 
-		// Now, Patient records is ready to persist to the database and here we're doing
-		// that with the help of EntityManager.
 		entityManager.persist(patientEntity);
 		System.out.println("Persisting is done");
 
-		// Setting the patient Id because it is the auto generated sequence in the
-		// database.
 		patientDataVO.setId(patientEntity.getId());
 
-		// Creating PatientAllergyRecord
 		List<PatientAllergyData> allergyVOList = patientDataVO.getPatientAllergyVO();
 		List<PatientAllergyEntity> allergyEntityList = allergyService.createPatientAllergyRecord(allergyVOList);
 
@@ -113,7 +87,6 @@ public class PatientServiceJpaImpl implements PatientService {
 
 	}
 
-	// Select all patient record from database and check for validation...
 	private List<PatientEntity> patientRecordListDB() {
 		TypedQuery<PatientEntity> query = entityManager.createNamedQuery(QueryConstants.QUERY_PATIENT_LIST_SEARCH,
 				PatientEntity.class);
@@ -146,7 +119,6 @@ public class PatientServiceJpaImpl implements PatientService {
 		for (PatientAllergyEntity patientAllergyEntity : patientAllergyEntityList) {
 
 			patientAllergyList.add(allergyMapper.mapToPatientAllergyVO(patientAllergyEntity));
-			// Confusing
 			patientAllergyEntity.setPatientEntity(patientEntity);
 
 		}
